@@ -96,7 +96,7 @@ graph TD
     B -->|Check MODAL_ENVIRONMENT| C{Is MODAL_ENVIRONMENT set to true}
     C -->|Yes| D[Import train_model from modal_train]
     C -->|No| E[Run local training in a separate thread]
-    D -->|Call train_model.remote()| F[Modal Cloud]
+    D -->|Call train_model.remote&lpar;&rpar;| F[Modal Cloud]
     F -->|Execute training script| G[Training Script Execution]
     G -->|Log metrics and save model| H[WandB Logging]
     H -->|Return results| I[Modal Cloud Response]
@@ -110,4 +110,5 @@ graph TD
     classDef local fill:#ccf,stroke:#333,stroke-width:2px
     class B,D,F,G,H,I modal
     class E,J,K local
+
 ```
