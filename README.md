@@ -105,7 +105,7 @@ graph TD
     J -->|Receive output| K[Parse Output]
     K -->|Send response to FastAPI| B
     B -->|Send response to Client| L[Client Receives Response]
-    
+
     classDef modal fill:#f9f,stroke:#333,stroke-width:2px
     classDef local fill:#ccf,stroke:#333,stroke-width:2px
     class B,D,F,G,H,I modal
