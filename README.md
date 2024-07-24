@@ -93,7 +93,7 @@ This setup provides you with a web API that can trigger machine learning trainin
 ```mermaid
 graph TD
     A[Client Request to Trigger Training] -->|POST /trigger-training| B[FastAPI App]
-    B -->|Check MODAL_ENVIRONMENT| C{Is MODAL_ENVIRONMENT set to "true"?}
+    B -->|Check MODAL_ENVIRONMENT| C{Is MODAL_ENVIRONMENT set to true}
     C -->|Yes| D[Import train_model from modal_train]
     C -->|No| E[Run local training in a separate thread]
     D -->|Call train_model.remote()| F[Modal Cloud]
@@ -105,9 +105,9 @@ graph TD
     J -->|Receive output| K[Parse Output]
     K -->|Send response to FastAPI| B
     B -->|Send response to Client| L[Client Receives Response]
-
-    classDef modal fill:#f9f,stroke:#333,stroke-width:2px;
-    classDef local fill:#ccf,stroke:#333,stroke-width:2px;
-    class B,D,F,G,H,I modal;
-    class E,J,K local;
+    
+    classDef modal fill:#f9f,stroke:#333,stroke-width:2px
+    classDef local fill:#ccf,stroke:#333,stroke-width:2px
+    class B,D,F,G,H,I modal
+    class E,J,K local
 ```
