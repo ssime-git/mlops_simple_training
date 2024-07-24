@@ -97,11 +97,12 @@ graph TD
     C -->|Yes| D[Import train_model from modal_train]
     C -->|No| E[Run local training in a separate thread]
     D -->|Call train_model.remote&lpar;&rpar;| F[Modal Cloud]
+    E -->|Execute subprocess to run modal_train.py| J[Subprocess Execution]
+    J -->|Send job to Modal Cloud| F[Modal Cloud]
     F -->|Execute training script| G[Training Script Execution]
     G -->|Log metrics and save model| H[WandB Logging]
     H -->|Return results| I[Modal Cloud Response]
     I -->|Send response to FastAPI| B
-    E -->|Execute subprocess to run modal_train.py| J[Subprocess Execution]
     J -->|Receive output| K[Parse Output]
     K -->|Send response to FastAPI| B
     B -->|Send response to Client| L[Client Receives Response]
@@ -110,5 +111,6 @@ graph TD
     classDef local fill:#ccf,stroke:#333,stroke-width:2px
     class B,D,F,G,H,I modal
     class E,J,K local
+
 
 ```
